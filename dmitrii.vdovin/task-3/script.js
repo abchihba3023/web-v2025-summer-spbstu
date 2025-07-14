@@ -1,16 +1,6 @@
 function mergeArrays(arr1, arr2) {
-    const merged = [];
-    for (let i of arr1){
-        if (!(merged.includes(i))){
-            merged.push(i)
-        }
-    }
-    for (let i of arr2){
-        if (!(merged.includes(i))){
-            merged.push(i)
-        }
-    }
-    return merged;
+    const mergedSet = new Set([...arr1, ...arr2]);
+    return Array.from(mergedSet);
 }
 const array1 = [1, 2, 3];
 const array2 = [3, 4, 5];
