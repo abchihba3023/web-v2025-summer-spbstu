@@ -2,12 +2,9 @@ function convertBase(num, fromBase, toBase){
     if (fromBase < 2 || fromBase > 16 || toBase < 2 || toBase > 16) {
         throw new Error("incorrect base number");
     }
-    let acceptableChar = '0123456789abcdef'.slice(0, fromBase);
-    let lowerNum = num.toLowerCase();
-    for (let i = 0; i < lowerNum.length; i++) {
-        if (!(acceptableChar.includes(lowerNum[i]))) {
-            throw new Error("incorrect number");
-        }
+    const regex = new RegExp(`^[0-9a-f]{1,}$`, 'i');
+    if (!regex.test(num)) {
+        throw new Error("incorrect number");
     }
     let value = parseInt(num, fromBase);
     return value.toString(toBase);
